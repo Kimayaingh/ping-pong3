@@ -21,6 +21,10 @@ var ball = {
     dy:3
 }
 
+rightwristX=0;
+rightwristY=0;
+scorerightwrist=0;
+
 function setup(){
   var canvas =  createCanvas(700,600);
 canvas.parent('canvas');
@@ -41,10 +45,15 @@ function gotPoses(){
     rightwristY=results[0].pose.rightwrist.y;
     rightwristX = results[0].pose.rightwrist.x;
     
+    scorerightwrist=results[0].pose.keypoints[10].score;
+    console.log(scorerightwrist)
   }
 }
 
 function draw(){
+  if(game_status=="start"){
+
+  
 
  background(0); 
  image(video,0,0,700,600);
@@ -84,6 +93,8 @@ function draw(){
    
    //function move call which in very important
     move();
+
+  }
 }
 
 
